@@ -1,9 +1,7 @@
 <%- include('partials/header.ejs') %>
 
-<div class="min-vh-100">
-<div class="container my-4">
-    <div id="content" class="row flex-row justify-content-evenly">
-        <div class="content col-12 col-xxl-8 col-xl-8 p-4">
+    <div id="caixa">
+        <div id="contein">
             <% if (posts.length === 0) { %>
                 <div id="divEmpty" class="text-center">
                     <img id="imagem" src="./images/empty.jpeg" alt="waiting your post">
@@ -12,7 +10,7 @@
                 <ul class="p-0 ulStyleNone">
             <%      posts.forEach((post) => { %>
                     <li class="p-4">
-                        <h3 class="fs-2 pt-serif"><%= post.title %></h3>
+                        <a href="/view/<%= posts.indexOf(post) %>"><h3 class="fs-2 pt-serif"><%= post.title %></h3></a>
                         <p class="fs-5 my-4">
                             <%= post.content.substring(0, 100) %>
                             <% if (post.content.length > 100) { %>
@@ -25,11 +23,9 @@
                 </ul>
             <% }  %>
         </div>
-        <div id="aside" class="content col-3 d-none d-lg-none d-md-none d-sm-none d-xl-block pt-4">
-            
+        <div id="aside" class="pt-4">
             <% if (posts.length === 0) { %>
-                <div class="text-center">
-                    
+                <%  %> 
                 </div>
             <% } else {  %>
                 <div class="text-center">
@@ -37,7 +33,7 @@
                     <ul class="p-0">
             <%          posts.forEach((post) => { %>
                         <li class="ulStyleNone">
-                            <h3 class="fs-6 pt-serif px-3 py-1"><a style="text-decoration: none;" href="/view/<%= posts.indexOf(post) %>"><%= post.title %></a></h3>
+                            <h3 class="fs-6 pt-serif px-3 py-1 "><a class="liDecorationNone" href="/view/<%= posts.indexOf(post) %>"><%= post.title %></a></h3>
                         </li>
             <%     });  %>
                     </ul>
@@ -45,8 +41,6 @@
                 </div>
 
         </div>
-    </div>
-</div>
 
 </div>
 
